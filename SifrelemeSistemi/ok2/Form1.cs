@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,36 +64,21 @@ namespace ok2 {
 
         int x, y, z;
         int xSize = 4, ySize = 3, zSize = 3, keySize = 7;
-
         char[] kar = { 'a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'i', 'ı', 'j', 'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'q', 'r', 's', 'ş', 't', 'u', 'ü', 'v', 'w', 'x', 'y', 'z', '.', ',', ' ' };
-
-        char[] c1 = { '0', '0', '0', '0' };
-        char[] c2 = { '0', '0', '0', '0' };
-        char[] c3 = { '0', '0', '0', '0' };
-        char[] c4 = { '0', '0', '0', '0' };
-        char[] c5 = { '0', '0', '0', '0' };
-        char[] c6 = { '0', '0', '0', '0' };
-        char[] c7 = { '0', '0', '0', '0' };
-        char[] c8 = { '0', '0', '0', '0' };
-        char[] c9 = { '0', '0', '0', '0' };
-
+        char[][][] c0 = new char[][][] { new char[][] { new char[] { '0', '0', '0', '0' }, new char[] { '0', '0', '0', '0' }, new char[] { '0', '0', '0', '0' } }, new char[][] { new char[] { '0', '0', '0', '0' }, new char[] { '0', '0', '0', '0' }, new char[] { '0', '0', '0', '0' } }, new char[][] { new char[] { '0', '0', '0', '0' }, new char[] { '0', '0', '0', '0' }, new char[] { '0', '0', '0', '0' } } };
 
         private void reset() {
             x = 0;
             y = 0;
             z = 0;
-            int ccount = 0;
-            foreach (char cc in c1) {
-                c1[ccount] = '0';
-                c2[ccount] = '0';
-                c3[ccount] = '0';
-                c4[ccount] = '0';
-                c5[ccount] = '0';
-                c6[ccount] = '0';
-                c7[ccount] = '0';
-                c8[ccount] = '0';
-                c9[ccount] = '0';
-                ccount++;
+            foreach (char[][] ch0 in c0) {
+                foreach (char[] ch1 in ch0) {
+                    int ccount = 0;
+                    foreach (char ch2 in ch1) {
+                        ch1[ccount] = '0';
+                        ccount++;
+                    }
+                }
             }
         }
 
@@ -174,76 +159,13 @@ namespace ok2 {
                     }
                 }
             }
-
             return 0;
         }
 
         private void put(char a, int x3, int y3, int z3, int t, int t2) {
-            int l = 0;
-
-            if (y3 == 0) {
-                if (z3 == 0) {
-                    if (c1[x3] == '0') {
-                        c1[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                } else if (z3 == 1) {
-                    if (c4[x3] == '0') {
-                        c4[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                } else if (z3 == 2) {
-                    if (c7[x3] == '0') {
-                        c7[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                }
-            } else if (y3 == 1) {
-                if (z3 == 0) {
-                    if (c2[x3] == '0') {
-                        c2[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                } else if (z3 == 1) {
-                    if (c5[x3] == '0') {
-                        c5[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                } else if (z3 == 2) {
-                    if (c8[x3] == '0') {
-                        c8[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                }
-            } else if (y3 == 2) {
-                if (z3 == 0) {
-                    if (c3[x3] == '0') {
-                        c3[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                } else if (z3 == 1) {
-                    if (c6[x3] == '0') {
-                        c6[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                } else if (z3 == 2) {
-                    if (c9[x3] == '0') {
-                        c9[x3] = a;
-                    } else {
-                        l = 1;
-                    }
-                }
-            }
-
-            if (l == 1) {
+            if (c0[z3][y3][x3] == '0') {
+                c0[z3][y3][x3] = a;
+            } else {
                 int t3 = 0;
                 int t4 = 0;
                 if (t2 == 0) {
@@ -286,24 +208,13 @@ namespace ok2 {
         }
 
         void printcub() {
-            Console.Write("\nc1:");
-            c1.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc2:");
-            c2.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc3:");
-            c3.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc4:");
-            c4.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc5:");
-            c5.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc6:");
-            c6.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc7:");
-            c7.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc8:");
-            c8.ToList().ForEach(i => Console.Write(" " + i));
-            Console.Write("\nc9:");
-            c9.ToList().ForEach(i => Console.Write(" " + i));
+            foreach (char[][] i in c0) {
+                foreach (char[] j in i) {
+                    j.ToList().ForEach(h => Console.Write(h + " "));
+                    Console.Write("--- ");
+                }
+                Console.Write("\n");
+            }
         }
 
         private List<int> encrypt(string entry) {
@@ -323,35 +234,7 @@ namespace ok2 {
                             int nye = (lye + ye) % ySize;
                             int nze = (lze + ze) % zSize;
 
-                            char wac = '0';
-
-                            if (nze == 0) {
-                                if (nye == 0) {
-                                    wac = c1[nxe];
-                                } else if (nye == 1) {
-                                    wac = c2[nxe];
-                                } else if (nye == 2) {
-                                    wac = c3[nxe];
-                                }
-                            } else if (nze == 1) {
-                                if (nye == 0) {
-                                    wac = c4[nxe];
-                                } else if (nye == 1) {
-                                    wac = c5[nxe];
-                                } else if (nye == 2) {
-                                    wac = c6[nxe];
-                                }
-                            } else if (nze == 2) {
-                                if (nye == 0) {
-                                    wac = c7[nxe];
-                                } else if (nye == 1) {
-                                    wac = c8[nxe];
-                                } else if (nye == 2) {
-                                    wac = c9[nxe];
-                                }
-                            }
-
-                            if (wac == cht) {
+                            if (c0[nze][nye][nxe] == cht) {
                                 encrypted.Add(xe);
                                 encrypted.Add(ye);
                                 encrypted.Add(ze);
@@ -383,52 +266,23 @@ namespace ok2 {
             int lye = 0;
             int lze = 0;
             for (int dt = 0; dt < dc.Count; dt += 3) {
-                char decr = '0';
                 int dx = dc[dt];
                 int dy = dx;
                 int dz = dx;
                 if (dt + 1 < dc.Count) {dy = dc[dt + 1];}
-                if (dt + 2 < dc.Count) {dz = dc[dt + 2];}
-                    
+                if (dt + 2 < dc.Count) {dz = dc[dt + 2];}                    
 
                 int nxe = (lxe + dx) % xSize;
                 int nye = (lye + dy) % ySize;
                 int nze = (lze + dz) % zSize;
 
-                if (nze == 0) {
-                    if (nye == 0) {
-                        decr = c1[nxe];
-                    } else if (nye == 1) {
-                        decr = c2[nxe];
-                    } else if (nye == 2) {
-                        decr = c3[nxe];
-                    }
-                } else if (nze == 1) {
-                    if (nye == 0) {
-                        decr = c4[nxe];
-                    } else if (nye == 1) {
-                        decr = c5[nxe];
-                    } else if (nye == 2) {
-                        decr = c6[nxe];
-                    }
-                } else if (nze == 2) {
-                    if (nye == 0) {
-                        decr = c7[nxe];
-                    } else if (nye == 1) {
-                        decr = c8[nxe];
-                    } else if (nye == 2) {
-                        decr = c9[nxe];
-                    }
-                }
-
                 lxe = nxe;
                 lye = nye;
                 lze = nze;
 
-                decrypted.Add(decr);
+                decrypted.Add(c0[nze][nye][nxe]);
             }
             return decrypted;
         }
-
     }
 }
